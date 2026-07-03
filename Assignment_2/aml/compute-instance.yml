@@ -1,0 +1,9 @@
+$schema: https://azuremlschemas.azureedge.net/latest/computeInstance.schema.json
+name: vgg19-gpu-ci
+type: computeinstance
+size: Standard_NC24ads_A100_v4
+identity:
+  type: user_assigned
+  user_assigned_identities:
+    - resource_id: /subscriptions/b6e08f96-9a62-46d0-b276-8dc80e6bc02a/resourceGroups/rg-deepguard-dev/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-deepguard
+idle_time_before_shutdown_minutes: 30

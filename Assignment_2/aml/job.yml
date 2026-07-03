@@ -1,0 +1,30 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+display_name: vgg19-transfer-learning-gpu
+experiment_name: Assignment_2_VGG19
+description: Runs Option2_VGG19_Transfer_Learning.ipynb end-to-end on a GPU compute cluster via nbconvert.
+
+code: ..
+
+inputs:
+  dataset:
+    type: uri_folder
+    path: azureml:animal-image-dataset@latest
+    mode: ro_mount
+
+outputs:
+  notebook_output:
+    type: uri_folder
+    mode: rw_mount
+
+environment: azureml://registries/azureml/environments/tensorflow-2.16-cuda12/labels/latest
+
+compute: azureml:gpu-cluster
+
+command: >-
+  mkdir -p ImageDataset &&
+  ln -s ${{inputs.dataset}} ImageDataset/images &&
+  jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=-1
+  --output-dir ${{outputs.notebook_output}}
+  --output executed_notebook.ipynb
+  Option2_VGG19_Transfer_Learning.ipynb &&
+  cp animal_vgg19_transfer.keras animal_vgg19_transfer.weights.h5 animal_vgg19_transfer.json ${{outputs.notebook_output}}/ 2>/dev/null || true
