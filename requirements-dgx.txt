@@ -1,0 +1,14 @@
+# DGX Spark / Linux aarch64 GPU environment for TensorFlow notebooks.
+--extra-index-url https://pypi.ngc.nvidia.com
+
+nvidia-tensorflow==2.17.0+nv25.2
+keras==3.15.0
+numpy==1.26.4
+scipy==1.14.1
+pandas
+matplotlib
+scikit-learn
+jupyter
+ipykernel
+pillow
+tqdm
