@@ -8,3 +8,5 @@ scikit-learn
 gradio
 tqdm
 tensorflow
+shap>=0.45,<0.53
+lime==0.2.0.1
