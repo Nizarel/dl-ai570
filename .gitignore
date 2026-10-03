@@ -1,5 +1,21 @@
 __MACOSX/
 .DS_Store
 
-# Ignore image dataset folder
+# Local Python and Jupyter artifacts
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Generated model checkpoints and exports
+*.pt
+*.pth
+*.ckpt
+*.keras
+*.h5
+*.onnx
+
+# Downloaded image dataset
 ImageDataset/
